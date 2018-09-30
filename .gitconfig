@@ -1,0 +1,11 @@
+[user]
+	email = yohachi.suga@gmail.com
+	name = sakira
+
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	cob = checkout -b
+	log1 = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
+
