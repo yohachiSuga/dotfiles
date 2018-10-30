@@ -52,6 +52,11 @@ alias mv='mv -i'
 alias vi='vim'
 alias cat='cat -n'
 alias less='less -NM'
+alias -g G='| grep'
+alias -g L='| less'
+alias vim='nvim'
+alias vi='nvim'
+
 export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
 
@@ -68,7 +73,10 @@ zstyle ':completion:*:descriptions' format '%BCompleting%b %U%d%u'
 #for pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 if [[ -d $PYENV_ROOT ]];then
-  export PATH="$PYENV_ROOT/bin:$PATH"
+  export PATH="$PATH:$PYENV_ROOT/bin"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+
+#for bazel build tool
+export PATH="$PATH:$HOME/bin"
