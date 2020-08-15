@@ -12,10 +12,11 @@ sudo apt-get update
 sudo apt-get install code
 
 VSCODE_CONFIG_DIR=~/.config/Code/User
+CODE_DOTFILES_DIR=`pwd`
 rm "$VSCODE_CONFIG_DIR/settings.json"
-ln -s ./settings.json "$VSCODE_CONFIG_DIR/settings.json"
+ln -s "$CODE_DOTFILES_DIR/settings.json" "$VSCODE_CONFIG_DIR/settings.json"
 rm "$VSCODE_CONFIG_DIR/keybindings.json"
-ln -s ./settings.json "$VSCODE_CONFIG_DIR/keybindings.json"
+ln -s "$CODE_DOTFILES_DIR/keybindings.json" "$VSCODE_CONFIG_DIR/keybindings.json"
 
 cat extensions | while read line
 do
