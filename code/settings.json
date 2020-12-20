@@ -15,5 +15,9 @@
 		"after":["<Esc>"]
 	}
     ],
-    "vim.hlsearch": true
+    "vim.hlsearch": true,
+	"vim.easymotion":true,
+	"vim.easymotionKeys":"sdfghjkl",
+	"vim.leader":"<space>",
+	"vim.useSystemClipboard":true
 }
