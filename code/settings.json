@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -19,5 +19,8 @@
 	"vim.easymotion":true,
 	"vim.easymotionKeys":"sdfghjkl",
 	"vim.leader":"<space>",
-	"vim.useSystemClipboard":true
+	"vim.useSystemClipboard":true,
+    "editor.tabSize":4,
+    "editor.insertSpaces":true,
+    "editor.detectIndentation":false
 }
