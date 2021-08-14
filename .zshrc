@@ -100,3 +100,11 @@ fi
 
 # launch byobu
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
+
+
+# terminal set vim binding
+bindkey -v
+bindkey "^R"  history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
