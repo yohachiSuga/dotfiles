@@ -40,7 +40,6 @@ zstyle ':vcs_info:*' formats "%F{cyan}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd() { vcs_info }
 # username:directory$
-PROMPT='%n:%F{green}%~%f %F{yellow}$%f '
 RPROMPT='${vcs_info_msg_0_}'
 
 # alias
@@ -104,7 +103,30 @@ _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
 
 # terminal set vim binding
 bindkey -v
-bindkey "^R"  history-incremental-search-backward
-bindkey '^S' history-incremental-search-forward
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
+bindkey -M viins "^R" history-incremental-search-backward
+bindkey -M viins '^S' history-incremental-search-forward
+bindkey -M viins '^P' history-beginning-search-backward
+bindkey -M viins '^N' history-beginning-search-forward
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+
+
+VIMODE='[i]'
+function zle-keymap-select zle-line-init zle-line-finish {
+	case $KEYMAP in
+		main|viins)
+			PROMPT_2="%F{cyan}I%f"
+			;;
+		vicmd)
+			PROMPT_2="%F{white}N%f"
+			;;
+	esac
+
+	PROMPT='${PROMPT_2} %n:%F{green}%~%f%F{yellow}$%f '
+	zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
