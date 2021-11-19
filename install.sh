@@ -17,7 +17,7 @@ install_chrome() {
 install_byobu() {
   echo "install byobu"
   if !(type "byobu" > /dev/null 2>&1); then
-    sudo apt update -y && sudo apt install -y byobu
+    sudo apt update -y && sudo apt install -y byobu xsel
   else
     echo "byobu already installed."
   fi
