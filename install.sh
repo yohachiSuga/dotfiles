@@ -29,7 +29,13 @@ install_all() {
   install_chrome
 }
 
+install_zsh_conf() {
+  sudo apt-get install -y curl
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+}
+
 configure_all() {
+  install_zsh_conf
   ln -snfv $DOTFILES_PATH/.zshrc ~/.zshrc
   ln -snfv $DOTFILES_PATH/.gitconfig ~/.gitconfig
   chsh -s /bin/zsh

@@ -131,3 +131,11 @@ function zle-keymap-select zle-line-init zle-line-finish {
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
+
+
+# zplug configuration
+source ~/.zplug/init.zsh
+zplug "zsh-users/zsh-autosuggestions", defer:2  
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2,bold"
+zplug load --verbose
+zplug install
