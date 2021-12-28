@@ -1,5 +1,4 @@
 christian-kohler.path-intellisense
-CoenraadS.bracket-pair-colorizer
 dbaeumer.vscode-eslint
 donjayamanne.githistory
 eamodio.gitlens
@@ -19,3 +18,4 @@ njpwerner.autodocstring
 streetsidesoftware.code-spell-checker
 vscodevim.vim
 sleistner.vscode-fileutils
+matklad.rust-analyzer
