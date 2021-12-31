@@ -19,3 +19,4 @@ streetsidesoftware.code-spell-checker
 vscodevim.vim
 sleistner.vscode-fileutils
 matklad.rust-analyzer
+vadimcn.vscode-lldb
