@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 2,
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -20,10 +20,19 @@
 	"vim.easymotionKeys":"sdfghjkl",
 	"vim.leader":"<space>",
 	"vim.useSystemClipboard":true,
+    "vim.handleKeys":{
+        // use gh instead of <C-k>
+        "<C-k>": false
+    },
     "editor.tabSize":4,
     "editor.insertSpaces":true,
     "editor.detectIndentation": false,
     "terminal.integrated.commandsToSkipShell": [
         "-workbench.action.terminal.findNext"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "clang-format.style": "{ BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 160 }",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    }
 }

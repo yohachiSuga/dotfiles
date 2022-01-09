@@ -20,3 +20,4 @@ vscodevim.vim
 sleistner.vscode-fileutils
 matklad.rust-analyzer
 vadimcn.vscode-lldb
+xaver.clang-format
