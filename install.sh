@@ -24,9 +24,15 @@ install_byobu() {
   ln -snfv $DOTFILES_PATH/.tmux.conf $DOTFILES_PATH/.tmux.conf
 }
 
+install_util() {
+    # git client
+    sudo apt install -y tig
+}
+
 install_all() {
   install_byobu
   install_chrome
+  install_util
 }
 
 install_zsh_conf() {
