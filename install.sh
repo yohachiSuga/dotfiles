@@ -26,7 +26,7 @@ install_byobu() {
 
 install_util() {
     # git client
-    sudo apt install -y tig
+    sudo apt install -y tig peco
 }
 
 install_all() {

@@ -48,16 +48,12 @@ alias ll='ls -l'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-#alias vi='vim'
 alias cat='cat -n'
 alias less='less -NM'
 alias -g G='| grep'
 alias -g L='| less'
 alias -g H='| head'
 alias -g C='| xsel --clipboard --input'
-#alias vim='nvim'
-#alias vi='nvim'
-alias history='history 1'
 alias chrome='google-chrome'
 
 export CLICOLOR=1
@@ -104,7 +100,7 @@ _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
 
 # terminal set vim binding
 bindkey -v
-bindkey -M viins "^R" history-incremental-search-backward
+#bindkey -M viins "^R" history-incremental-search-backward
 bindkey -M viins '^S' history-incremental-search-forward
 bindkey -M viins '^P' history-beginning-search-backward
 bindkey -M viins '^N' history-beginning-search-forward
@@ -139,3 +135,37 @@ zplug "zsh-users/zsh-autosuggestions", defer:2
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2,bold"
 zplug load --verbose
 zplug install
+
+# enable peco crtl-R history search
+function peco-history-selection() {
+    BUFFER=`history -n -r 1 | peco --query "$LBUFFER"`
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
+
+# enable cdr
+if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ':completion:*:*:cdr:*:*' menu selection
+  zstyle ':completion:*' recent-dirs-insert both
+  zstyle ':chpwd:*' recent-dirs-max 500
+  zstyle ':chpwd:*' recent-dirs-default true
+  zstyle ':chpwd:*' recent-dirs-file "${XDG_CACHE_HOME:-$HOME/.cache}/shell/chpwd-recent-dirs"
+  zstyle ':chpwd:*' recent-dirs-pushd true
+fi
+
+# set cdr
+function peco-cdr () {
+    local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+}
+zle -N peco-cdr
+bindkey '^E' peco-cdr
