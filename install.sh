@@ -24,9 +24,15 @@ install_byobu() {
   ln -snfv $DOTFILES_PATH/.tmux.conf $DOTFILES_PATH/.tmux.conf
 }
 
+install_rust() {
+    sudo apt-get -y install build-essential
+    sh -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+
 install_util() {
     # git client
-    sudo apt install -y tig peco
+    sudo apt install -y tig peco vim wget
 }
 
 install_all() {

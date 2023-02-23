@@ -86,13 +86,13 @@ export PATH="$PATH:$HOME/bin"
 
 #export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-if [ -f $HOME/.cargo/env ]; then
-  source $HOME/.cargo/env
-  alias grep='rg'
-  alias cat='bat'
-  alias find='fd'
-  alias ls='exa'
-fi
+# if [ -f $HOME/.cargo/env ]; then
+#   source $HOME/.cargo/env
+#   alias grep='rg'
+#   alias cat='bat'
+#   alias find='fd'
+#   alias ls='exa'
+# fi
 
 # launch byobu
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true

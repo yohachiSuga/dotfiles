@@ -21,3 +21,5 @@ sleistner.vscode-fileutils
 matklad.rust-analyzer
 vadimcn.vscode-lldb
 xaver.clang-format
+rust-lang.rust-analyzer
+wayou.vscode-todo-highlight
