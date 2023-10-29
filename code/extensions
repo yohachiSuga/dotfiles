@@ -23,3 +23,4 @@ vadimcn.vscode-lldb
 xaver.clang-format
 rust-lang.rust-analyzer
 wayou.vscode-todo-highlight
+llvm-vs-code-extensions.vscode-clangd
