@@ -177,5 +177,9 @@ function peco-cdr () {
     fi
 }
 zle -N peco-cdr
-bindkey '^E' peco-cdr
+bindkey '^W' peco-cdr
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH=$HOME/.local/bin:$PATH
+
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
