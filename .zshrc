@@ -143,8 +143,17 @@ function peco-history-selection() {
     zle clear-screen
 }
 
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+#zle -N peco-history-selection
+#bindkey '^R' peco-history-selection
+
+# search by fzf
+function fzf-select-history() {
+    BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER" --reverse)
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^R' fzf-select-history
 
 
 # enable cdr
@@ -169,3 +178,4 @@ function peco-cdr () {
 }
 zle -N peco-cdr
 bindkey '^E' peco-cdr
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

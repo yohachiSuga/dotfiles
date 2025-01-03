@@ -33,6 +33,10 @@ install_rust() {
 install_util() {
     # git client
     sudo apt install -y tig peco vim wget
+
+    # install fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
 }
 
 install_all() {
