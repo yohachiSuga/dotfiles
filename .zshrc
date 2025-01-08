@@ -18,6 +18,7 @@ compinit -u
 if [ -e /usr/local/share/zsh-completions ]; then
   fpath=(/usr/local/share/zsh-completions $fpath)
 fi
+
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # 補完候補を詰めて表示
@@ -136,26 +137,6 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2,bold"
 zplug load --verbose
 zplug install
 
-# enable peco crtl-R history search
-function peco-history-selection() {
-    BUFFER=`history -n -r 1 | peco --query "$LBUFFER"`
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-
-#zle -N peco-history-selection
-#bindkey '^R' peco-history-selection
-
-# search by fzf
-function fzf-select-history() {
-    BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER" --reverse)
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-zle -N fzf-select-history
-bindkey '^R' fzf-select-history
-
-
 # enable cdr
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
@@ -178,8 +159,29 @@ function peco-cdr () {
 }
 zle -N peco-cdr
 bindkey '^W' peco-cdr
+
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export PATH=$HOME/.local/bin:$PATH
 
+### fzf customization
 
+# enable fzf (CTRL-R for history search, CTRL-T for file search and paste, alt-c for cd)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# to print QUERY to top
+export FZF_DEFAULT_OPTS="-e --prompt='QUERY> ' --layout=reverse --height 50%"
+
+# to print tree preview for alt-c
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+# directly executing from history search 
+fzf-history-widget-accept() {
+  fzf-history-widget
+  zle accept-line
+}
+zle     -N     fzf-history-widget-accept
+bindkey '^X^R' fzf-history-widget-accept
+
+# TODO:LIST 
+# use bat / exa for preview of fzf?
+# customize cdr to z?
