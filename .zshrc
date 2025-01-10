@@ -171,6 +171,9 @@ export PATH=$HOME/.local/bin:$PATH
 # to print QUERY to top
 export FZF_DEFAULT_OPTS="-e --prompt='QUERY> ' --layout=reverse --height 50%"
 
+# preview by bat for ctrl-t
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=header,grid --line-range :100 {}'"
+
 # to print tree preview for alt-c
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
@@ -183,5 +186,4 @@ zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
 
 # TODO:LIST 
-# use bat / exa for preview of fzf?
 # customize cdr to z?

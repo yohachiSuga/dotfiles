@@ -68,7 +68,7 @@ else
 
   # install rust cli tools
   # https://zaiste.net/posts/shell-commands-rust
-  # ./rust_clitools/install.sh
+  ./rust_clitools/install.sh
 
   configure_all
 fi
