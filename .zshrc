@@ -150,15 +150,15 @@ autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 fi
 
 # set cdr
-function peco-cdr () {
-    local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
+function fzf-cdr () {
+    local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | fzf)"
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
 }
-zle -N peco-cdr
-bindkey '^W' peco-cdr
+zle -N fzf-cdr
+bindkey '^W' fzf-cdr
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export PATH=$HOME/.local/bin:$PATH
@@ -184,6 +184,3 @@ fzf-history-widget-accept() {
 }
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
-
-# TODO:LIST 
-# customize cdr to z?
