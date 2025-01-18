@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xe
 
 DOTFILES_PATH=~/dotfiles
 
@@ -31,23 +32,31 @@ install_rust() {
 }
 
 install_util() {
-    # git client
-    sudo apt install -y tig peco vim wget
+    # some utilities
+    sudo apt install -y tig peco vim wget zsh tree
 
     # install fzf
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
 }
 
+install_clang() {
+  wget https://apt.llvm.org/llvm.sh -O /tmp/llvm.sh
+  chmod +x /tmp/llvm.sh
+  sudo /tmp/llvm.sh all
+}
+
 install_all() {
   install_byobu
   install_chrome
   install_util
+  install_clang
 }
 
 install_zsh_conf() {
   sudo apt-get install -y curl
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+#   install zinit
+  bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 }
 
 configure_all() {

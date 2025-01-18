@@ -22,7 +22,9 @@
 	"vim.useSystemClipboard":true,
     "vim.handleKeys":{
         // use gh instead of <C-k>
-        "<C-k>": false
+        "<C-k>": false,
+        // use ctrl+p for go to file
+        "<C-p>": false
     },
     "editor.tabSize":4,
     "editor.insertSpaces":true,

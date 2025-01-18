@@ -1,4 +1,5 @@
 #!/bin/sh
+set -xe
 
 install_vscode() {
     cd `dirname $0`
@@ -17,9 +18,9 @@ configure_vscode() {
     cd `dirname $0`
     VSCODE_CONFIG_DIR=~/.config/Code/User
     CODE_DOTFILES_DIR=`pwd`
-    rm "$VSCODE_CONFIG_DIR/settings.json"
+    rm -f "$VSCODE_CONFIG_DIR/settings.json"
     ln -snvf "$CODE_DOTFILES_DIR/settings.json" "$VSCODE_CONFIG_DIR/settings.json"
-    rm "$VSCODE_CONFIG_DIR/keybindings.json"
+    rm -f "$VSCODE_CONFIG_DIR/keybindings.json"
     ln -snvf "$CODE_DOTFILES_DIR/keybindings.json" "$VSCODE_CONFIG_DIR/keybindings.json"
 
     cat extensions | while read line

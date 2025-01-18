@@ -6,6 +6,7 @@ echo "your os could be $OS $VER"
 
 # setup RUST tools
 # setup cargo for installation
+sudo apt-get -y install build-essential
 sudo apt install -y curl
 curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
@@ -23,4 +24,3 @@ rg strip
 
 ~/.cargo/bin/cargo install exa
 echo 'Please execute $HOME/.cargo/env'
-i

@@ -87,13 +87,13 @@ export PATH="$PATH:$HOME/bin"
 
 #export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# if [ -f $HOME/.cargo/env ]; then
-#   source $HOME/.cargo/env
+if [ -f $HOME/.cargo/env ]; then
+  source $HOME/.cargo/env
 #   alias grep='rg'
 #   alias cat='bat'
 #   alias find='fd'
 #   alias ls='exa'
-# fi
+fi
 
 # launch byobu
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
@@ -130,13 +130,6 @@ zle -N zle-line-finish
 zle -N zle-keymap-select
 
 
-# zplug configuration
-source ~/.zplug/init.zsh
-zplug "zsh-users/zsh-autosuggestions", defer:2  
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2,bold"
-zplug load --verbose
-zplug install
-
 # enable cdr
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
@@ -145,6 +138,9 @@ autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
   zstyle ':completion:*' recent-dirs-insert both
   zstyle ':chpwd:*' recent-dirs-max 500
   zstyle ':chpwd:*' recent-dirs-default true
+  if [ ! -d "$HOME/.cache/shell" ]; then
+    mkdir -p "$HOME/.cache/shell"
+  fi
   zstyle ':chpwd:*' recent-dirs-file "${XDG_CACHE_HOME:-$HOME/.cache}/shell/chpwd-recent-dirs"
   zstyle ':chpwd:*' recent-dirs-pushd true
 fi
@@ -160,7 +156,6 @@ function fzf-cdr () {
 zle -N fzf-cdr
 bindkey '^W' fzf-cdr
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export PATH=$HOME/.local/bin:$PATH
 
 ### fzf customization
@@ -184,3 +179,31 @@ fzf-history-widget-accept() {
 }
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+
+# some plugins
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
