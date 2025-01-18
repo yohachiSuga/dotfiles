@@ -46,6 +46,15 @@ install_clang() {
   sudo /tmp/llvm.sh all
 }
 
+install_wezterm() {
+  curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
+  echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+  sudo apt update -y && sudo apt install wezterm -y
+
+  sudo update-alternatives --config x-terminal-emulator
+  ln -snfv ~/dotfiles/.wezterm.lua ~/.wezterm.lua
+}
+
 install_all() {
   install_byobu
   install_chrome
