@@ -24,7 +24,9 @@
         // use gh instead of <C-k>
         "<C-k>": false,
         // use ctrl+p for go to file
-        "<C-p>": false
+        "<C-p>": false,
+        // use copilot chat
+        "<C-i>": false
     },
     "editor.tabSize":4,
     "editor.insertSpaces":true,
