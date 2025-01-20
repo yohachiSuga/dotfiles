@@ -46,7 +46,6 @@
     },
     "C_Cpp.intelliSenseEngine": "disabled",
     "clangd.path": "/home/akira/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
-    "redhat.telemetry.enabled": false,
     "[python]": {
         "editor.formatOnType": true
     },
@@ -60,5 +59,6 @@
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "workbench.panel.defaultLocation": "right"
+    "workbench.panel.defaultLocation": "right",
+    "files.insertFinalNewline": true
 }
