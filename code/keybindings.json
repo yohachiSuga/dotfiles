@@ -3,17 +3,18 @@
   {
     "key": "ctrl+h",
     "command": "workbench.action.focusSideBar",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus || terminalFocus"
   },
+
   {
     "key": "ctrl+j",
     "command": "workbench.action.terminal.focus",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus || filesExplorerFocus"
   },
   {
     "key": "ctrl+l",
     "command": "workbench.action.focusFirstEditorGroup",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus || terminalFocus"
   },
   {
     "key": "ctrl+k",
