@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 2,
+    "window.zoomLevel": 5,
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -9,18 +9,23 @@
     "typescript.updateImportsOnFileMove.enabled": "always",
     "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sXCIsXCJjdXN0b21MaWJyYXJpZXNcIjpbXCJMLnNjcmF0Y2hwYWRcIl0sXCJwbHVnaW5zXCI6W10sXCJyZWNlbnRDb2xvcnNcIjpbXSxcImZvcm1hdFdpZHRoXCI6MCxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwicGFnZUZvcm1hdFwiOntcInhcIjowLFwieVwiOjAsXCJ3aWR0aFwiOjgyNyxcImhlaWdodFwiOjExNjl9LFwic2VhcmNoXCI6dHJ1ZSxcInNob3dTdGFydFNjcmVlblwiOnRydWUsXCJncmlkQ29sb3JcIjpcIiNkMGQwZDBcIixcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImF1dG9zYXZlXCI6dHJ1ZSxcInJlc2l6ZUltYWdlc1wiOm51bGwsXCJvcGVuQ291bnRlclwiOjAsXCJ2ZXJzaW9uXCI6MTgsXCJ1bml0XCI6MSxcImlzUnVsZXJPblwiOmZhbHNlLFwidWlcIjpcIlwifSJ9",
     "hediet.vscode-drawio.offline": false,
-    "vim.insertModeKeyBindings":[
-    	{
-		"before":["j","j"],
-		"after":["<Esc>"]
-	}
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
     ],
     "vim.hlsearch": true,
-	"vim.easymotion":true,
-	"vim.easymotionKeys":"sdfghjkl",
-	"vim.leader":"<space>",
-	"vim.useSystemClipboard":true,
-    "vim.handleKeys":{
+    "vim.easymotion": true,
+    "vim.easymotionKeys": "sdfghjkl",
+    "vim.leader": "<space>",
+    "vim.useSystemClipboard": true,
+    "vim.handleKeys": {
         // use gh instead of <C-k>
         "<C-k>": false,
         // use ctrl+p for go to file
@@ -28,8 +33,8 @@
         // use copilot chat
         "<C-i>": false
     },
-    "editor.tabSize":4,
-    "editor.insertSpaces":true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
     "editor.detectIndentation": false,
     "terminal.integrated.commandsToSkipShell": [
         "-workbench.action.terminal.findNext"
@@ -37,6 +42,23 @@
     "editor.formatOnSave": true,
     "clang-format.style": "{ BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 160 }",
     "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
-    }
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "clangd.path": "/home/akira/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
+    "redhat.telemetry.enabled": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "workbench.colorTheme": "Default Dark+",
+    "vsnotes.defaultNotePath": "/home/akira/workspace/notes",
+    "[rust]": {
+        "editor.formatOnSave": true
+    },
+    "rust-analyzer.checkOnSave": true,
+    "rust-analyzer.check.command": "clippy",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "workbench.panel.defaultLocation": "right"
 }
